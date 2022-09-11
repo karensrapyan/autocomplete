@@ -1,8 +1,8 @@
-import Autocomplete from "./autocomplete";
+import AutocompleteWrapper from "./autocomplete";
 
 function App() {
  return (
-   <Autocomplete />
+   <AutocompleteWrapper />
  );
 }
 

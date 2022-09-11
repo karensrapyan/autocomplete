@@ -22,33 +22,36 @@ function List({ isLoading, data, onSelect }: IList) {
   }, [onSelect]);
 
   return (
-    <div className="autocompleteItems" hidden={hide}>
+    <>
       {
-        isLoading ? (
-          <div>Loading ...</div>
-        ) : (
-          <>
-            {
-              (data?.users || []).map((user: IUser) => {
-                /**
-                 * When we use general store like redux or InMemoryCache from apollo
-                 * it is better to pass only id and fetch label inside ListItem from store it will protect us from
-                 * unnecessary re-renders (ListItem is memoized)
-                 * */
-                return (
-                  <ListItem
-                    key={user.id}
-                    id={user.id}
-                    label={[user.firstName, user.lastName, `(${user.email})`].join(' ')}
-                    onSelect={handleSelect}
-                  />
-                )
-              })
-            }
-          </>
+        isLoading && (
+          <div className="autocompleteItems" hidden={hide}>
+            <div>Loading ...</div>
+          </div>
         )
       }
-    </div>
+      <div className="autocompleteItems" hidden={hide || isLoading}>
+        <>
+          {
+            (data?.users || []).map((user: IUser) => {
+              /**
+               * When we use general store like redux or InMemoryCache from apollo
+               * it is better to pass only id and fetch label inside ListItem from store it will protect us from
+               * unnecessary re-renders (ListItem is memoized)
+               * */
+              return (
+                <ListItem
+                  key={user.id}
+                  id={user.id}
+                  label={[user.firstName, user.lastName, `(${user.email})`].join(' ')}
+                  onSelect={handleSelect}
+                />
+              )
+            })
+          }
+        </>
+      </div>
+    </>
   );
 }
 

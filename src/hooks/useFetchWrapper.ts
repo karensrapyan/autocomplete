@@ -49,7 +49,7 @@ export function useFetchWrapper<T = any>(route?: string): FetchWrapperType<T> {
        * We are free to call them like below
        * */
       setStatus(RequestStatus.LOADING);
-      setData(null);
+      //setData(null);
       setError(null);
 
       abortControllerRef.current = new AbortController();

@@ -1,0 +1,36 @@
+.App {
+  width: 600px;
+  display: inline-block;
+}
+
+.autocomplete input {
+  border: 1px solid transparent;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+.autocompleteItems {
+  border: 1px solid #d4d4d4;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.autocompleteItems div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+/*when hovering an item:*/
+.autocompleteItems div:hover {
+  background-color: #e9e9e9;
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocompleteActive {
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}

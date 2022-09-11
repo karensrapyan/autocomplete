@@ -15,7 +15,7 @@ interface IListItemInterface {
  * */
 function ListItem({ label, onSelect }: IListItemInterface) {
   // fetch data from store by id and print label from it in case we use general store
-  const searchFormContext = useContext(SearchFormContext)
+  const searchFormContext = useContext(SearchFormContext);
 
   const _highlightQuery = (string: string, search: string) => {
     let regex = new RegExp("(" + search + ")", "gi");
@@ -28,7 +28,7 @@ function ListItem({ label, onSelect }: IListItemInterface) {
 
   return (
     <div onClick={handleSelect}>
-      <span dangerouslySetInnerHTML={{__html: _highlightQuery(label, searchFormContext.current.value)}}></span>
+      <span dangerouslySetInnerHTML={{__html: _highlightQuery(label, searchFormContext.search)}}></span>
     </div>
   );
 }

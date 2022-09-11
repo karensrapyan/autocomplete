@@ -12,8 +12,7 @@ interface ISearchForm {
 const SEARCH_FORM = 'searchForm';
 
 function SearchForm({searchHandler, setCallback, resetCallback}: ISearchForm) {
-  const searchFormContext = useContext(SearchFormContext);
-  const [search, setSearch] = useState<string>('');
+  const {search, setSearch} = useContext(SearchFormContext);
   const [suggestionSelected, setSuggestionSelected] = useState<boolean>(false);
 
   const handleSearch = (e: any) => {
@@ -51,7 +50,7 @@ function SearchForm({searchHandler, setCallback, resetCallback}: ISearchForm) {
    <form name={SEARCH_FORM}>
      <p>Start typing:</p>
      <div className="autocomplete">
-       <input onChange={handleSearch} value={search} name="search" placeholder="User" ref={searchFormContext} />
+       <input onChange={handleSearch} value={search} name="search" placeholder="User" />
      </div>
    </form>
  );

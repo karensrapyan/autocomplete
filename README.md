@@ -10,7 +10,7 @@ This project was bootstrapped with [Create React Autocomplete](https://github.co
 4. `npm run build` then `npx serve -s build` for prod server testing
 
 ### Please Note
- Searching works only for firstName because of fake API endpoint which is used here
+ Searching works for firstName , lastName, email separately, but I am showing data joined 
 
  Try:
    Ter, Te, Terry, Jo, John and etc....

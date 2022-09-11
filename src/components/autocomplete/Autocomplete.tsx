@@ -29,8 +29,7 @@ function Autocomplete() {
       {/*Same is true for setCallback */}
       <SearchForm searchHandler={searchHandler} setCallback={setCallback} resetCallback={reset} />
       {/*
-        In case we use single store we can skip passing anything to List
-        but fetch and listen with useEffect isLoading, data inside List itself
+        In case we will use single store we can skip passing isLoading data from here and instead get them from store inside List
       */}
       <List isLoading={isLoading} data={data} onSelect={callback} />
     </div>

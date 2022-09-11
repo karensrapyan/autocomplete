@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { IVariables } from "intefaces";
 import { IAutoSelectCallbackSetter } from "types";
+import { SearchFormContext } from "context";
 
 interface ISearchForm {
   searchHandler: (variables?: IVariables) => Promise<any>;
   setCallback: IAutoSelectCallbackSetter;
-  resetCallback: () => void
+  resetCallback: () => void;
 }
 
 const SEARCH_FORM = 'searchForm';
 
 function SearchForm({searchHandler, setCallback, resetCallback}: ISearchForm) {
+  const searchFormContext = useContext(SearchFormContext);
   const [search, setSearch] = useState<string>('');
   const [suggestionSelected, setSuggestionSelected] = useState<boolean>(false);
 
@@ -49,7 +51,7 @@ function SearchForm({searchHandler, setCallback, resetCallback}: ISearchForm) {
    <form name={SEARCH_FORM}>
      <p>Start typing:</p>
      <div className="autocomplete">
-       <input onChange={handleSearch} value={search} name="search" placeholder="User" />
+       <input onChange={handleSearch} value={search} name="search" placeholder="User" ref={searchFormContext} />
      </div>
    </form>
  );

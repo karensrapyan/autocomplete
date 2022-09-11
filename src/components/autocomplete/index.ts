@@ -3,5 +3,5 @@
  will work as well but in App we need to import like this
  import {Autocomplete} from 'autocomplete'
 * */
-import Autocomplete from './Autocomplete';
-export default Autocomplete;
+import AutocompleteWrapper from './AutocompleteWrapper';
+export default AutocompleteWrapper;

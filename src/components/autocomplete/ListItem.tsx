@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { IAutoSelectCallback } from "types";
+import { SearchFormContext } from "context";
 
 interface IListItemInterface {
   id: number;
@@ -14,13 +15,21 @@ interface IListItemInterface {
  * */
 function ListItem({ label, onSelect }: IListItemInterface) {
   // fetch data from store by id and print label from it in case we use general store
+  const searchFormContext = useContext(SearchFormContext)
+
+  const _highlightQuery = (string: string, search: string) => {
+    let regex = new RegExp("(" + search + ")", "gi");
+    return string.replace(regex, "<mark>$1</mark>");
+  }
 
   const handleSelect = () => {
     onSelect(label)
   }
 
   return (
-    <div onClick={handleSelect}>{label}</div>
+    <div onClick={handleSelect}>
+      <span dangerouslySetInnerHTML={{__html: _highlightQuery(label, searchFormContext.current.value)}}></span>
+    </div>
   );
 }
 

@@ -1,25 +1,18 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IUser, IUserData } from "intefaces";
-import { IAutoSelectCallback } from "types";
 import ListItem from "./ListItem";
 
 interface IList {
   isLoading: boolean;
   data: IUserData | null;
-  onSelect: IAutoSelectCallback;
 }
 
-function List({ isLoading, data, onSelect }: IList) {
+function List({ isLoading, data }: IList) {
   const [hide, setHide] = useState(false);
 
   useEffect(() => {
     setHide(false);
   }, [isLoading])
-
-  const handleSelect = useCallback((label: string) => {
-    onSelect(label);
-    setHide(true);
-  }, [onSelect]);
 
   return (
     <>
@@ -44,7 +37,6 @@ function List({ isLoading, data, onSelect }: IList) {
                   key={user.id}
                   id={user.id}
                   label={[user.firstName, user.lastName, `(${user.email})`].join(' ')}
-                  onSelect={handleSelect}
                 />
               )
             })

@@ -1,14 +1,28 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { SearchFormContext } from "context";
-import './styles/Autocomplete.css';
 import Autocomplete from "./Autocomplete";
+import './styles/Autocomplete.css';
 
 function AutocompleteWrapper() {
-  const [search, setSearch] = useState<string>('')
+  const [search, setSearch] = useState<string>('');
+  const [suggestionSelected, setSuggestionSelected] = useState<boolean>(false);
+
+  const onSearch = useCallback((value: string) => {
+    setSuggestionSelected(false);
+    setSearch(value);
+  }, []);
+
+  const onSelect = useCallback((value: string) => {
+    setSuggestionSelected(true);
+    setSearch(value);
+  }, []);
+
   return (
     <SearchFormContext.Provider value={{
       search,
-      setSearch
+      suggestionSelected,
+      onSearch,
+      onSelect
     }}>
       <Autocomplete />
     </SearchFormContext.Provider>

@@ -1,4 +1,6 @@
 export interface ISearchFormContext {
   search: string;
-  setSearch: (value: string) => void;
+  suggestionSelected: boolean;
+  onSearch: (value: string) => void;
+  onSelect: (value: string) => void;
 }

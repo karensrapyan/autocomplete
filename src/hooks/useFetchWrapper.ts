@@ -91,5 +91,5 @@ export function useFetchWrapper<T = any>(route?: string): FetchWrapperType<T> {
       resetData,
       result
     ] as FetchWrapperType<T>
-  }, [execute, result]);
+  }, [execute, resetData /*can be excluded because it is memoized*/, result]);
 }

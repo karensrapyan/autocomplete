@@ -1,4 +1,4 @@
-# Getting Started with Create React Autocomplete
+# Getting Started with Create React Autocomplete 
 
 This project was bootstrapped with [Create React Autocomplete](https://github.com/facebook/create-react-app).
 
